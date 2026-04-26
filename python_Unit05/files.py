@@ -30,11 +30,20 @@ def longest_words(filename):
     for line in my_file:
         long_word = longest_word(line)
         print("Longest Word:", long_word)
+        
+
+def print_names(filename):
+    my_file = open(filename)
+    next(my_file)
+    for record in my_file:
+        records = record.split(",")
+        print(records[1],records[0])
     
 def main():
     # print_lines("data/words.txt")
-    print(longest_word("you are the biggest fish"))
-    print(longest_words("data/alice.txt"))
+    # print(longest_word("you are the biggest fish"))
+    # print(longest_words("data/alice.txt"))
+    print_names("python_Unit05/data/grades_010.csv")
  
 if __name__ == "__main__":
     main()
