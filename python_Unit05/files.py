@@ -1,3 +1,6 @@
+import plotter
+import plots
+
 def print_lines(filename):
     word = input("Enter the word: ")
     isfound = False
@@ -39,12 +42,49 @@ def print_names(filename):
         records = record.split(",")
         print(records[1],records[0])
     
+    my_file.close()
+    
+    
+def average(filename, col):
+
+    with open(filename) as my_file:
+        len_file = 0            
+        grade = 0
+        header = next(my_file).split(",")
+        for line in my_file:
+            fields = line.split(",")
+            grade += int(fields[col])
+            len_file += 1
+        
+        avg = grade / len_file
+            
+    print(header[col], ":", avg)
+    
+def plot_grades(filename, col):
+    
+    
+    with open(filename) as my_file:
+        header = next(my_file).split(",")
+        plotter.init("grades for " + str(header[col]), "Students", "Scores" )
+
+        for line in my_file:
+            fields = line.split(",")
+            
+            field = fields[col]
+            plotter.add_data_point(float(field))
+
+    plotter.plot()
+            
+                
+            
 def main():
     # print_lines("data/words.txt")
     # print(longest_word("you are the biggest fish"))
     # print(longest_words("data/alice.txt"))
-    print_names("python_Unit05/data/grades_010.csv")
- 
+    # print_names("python_Unit05/data/grades_010.csv")
+    # average("python_Unit05/data/grades_010.csv", 2)
+    plot_grades("python_Unit05/data/grades_010.csv", 10)
+    input("Enter to stop...")
 if __name__ == "__main__":
     main()
         
