@@ -17,7 +17,7 @@ def py_tester():
     
     return count
 
-def display_score():
+
     
 
 def main():
