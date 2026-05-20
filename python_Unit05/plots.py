@@ -1,80 +1,77 @@
 import plotter
 
-def quit(): 
-    prompt = input("Are you sure? y or n: ")
-    if prompt == 'y': 
-        return True 
-    elif prompt == 'n': 
-        return False
-    
-
-
-def plot_grades(filename,first,last):
-    plotter.init(first+' '+last,'GradeItem',"Score")
-    plotter.init("grades", "students", "grade")
-    file = open(filename)
-    next(file)
-    i = 2
-    try: 
-        for line in file: 
-            tokens = line.split(',')
-            name = str(tokens[0])
-            if name == last: 
-                for grades in range(2,17):
-                    datas = float(tokens[grades])
-                    plotter.add_data_point(datas)
-        plotter.plot()
-        print("Please enter to continue...")
+def quit():
+    asw = input("Are you sure (y/n): ")
+    if asw == "Y" or asw == "y":
         return True
-    except ValueError: 
-        plotter.plot_data_points(0.0)
-        plotter.plot()
-        return False
+    
+    else:
+        False
 
+def plot_grades(filename, first_name, last_name):
+    is_found = False
+    plotter.init(first_name + " " + last_name, "Grade Item", "Score")
+    
+    with open(filename) as my_file:
+        next(my_file)
+        for records in my_file:
+            fields = records.split(",")
+            if fields[0] == last_name and fields[1] == first_name:
+                is_found = True
+                for index in range(2, 18):
+                    try:
+                        plotter.add_data_point((float(fields[index])))
+                    except ValueError:
+                        plotter.add_data_point(0.0)
+                        
+    plotter.plot()
+    return is_found
 
-def student_grades(string):
-    result = ''
-    split = string.split(' ')
-    try: 
-        if plot_grades(split[1],split[2],split[3]): 
-            result = True
-            return True
-        else: 
-            return False
-    except FileNotFoundError:
-        print("No such file: ",split[1])
+def student_grades(spt):
+    try:
+        cmd = spt[0]
+        filename = spt[1]
+        first = spt[2]
+        last = spt[3]
+        if plot_grades(filename, first, last):
+            print("Plot finished (window may be hidden).")
+        else:
+            print("Plot failed (no such student).")
+            
     except IndexError:
-            print('Usage: stu <file name> <first name> <last name>')
-    except ValueError:
-        print("No such student")
-
-
+        print("Usage: stu <filename> <first name> <last name>")
+    
+    except FileNotFoundError:
+        print("No such file:", filename)
+    
 
 def help():
-    print("stu <file name> <first name> <last name> - plot student grades item\nquit - quits\nhelp - displays this message")
-
+    print(" stu <filename> <first name> <last name> - plot student grades\n quit - quits\n help - displays this messeage")
     
     
-
-
-
-def main(): 
+                                
+        
+def main():
+    
     while True:
-        token = input(">> ")
-        token_split = token.split()
         try:
-            if token_split[0] == 'help':
-                help()
-            if token_split[0] == 'stu': 
-                student_grades(token)
-                
-            if token_split[0] == 'quit':
-                if quit() == True:
-                    print("GoodBye!")
+            cmd = input(">> ")
+            cmd_spt = cmd.split()
+            if cmd_spt[0] == "quit":
+                if quit():
+                    
+                    print("Goodbye!")
                     break
-        except: 
-            print("Enter a command or 'quit' to quit")
+            elif cmd_spt[0] == "stu":
+                student_grades(cmd_spt)
             
-            
+            elif cmd_spt[0] == "help":
+                help()
+        except IndexError:
+            print("Enter a command or 'quit' to quit.")
+ 
+if __name__ == "__main__":
+    main()
 
-main()
+        
+        
