@@ -42,17 +42,24 @@ def binary_search(an_array, target, start=None, end=None):
     elif an_array[midpoint] > target:
         return binary_search(an_array, target, start, midpoint - 1)
     
-    
+def binary_search_timer(an_array, target):
+    begin = time.perf_counter()
+    binary_search(an_array, target)
+    end = time.perf_counter()
+
+    return end - begin
+
+
     
 def main():
-    an_array = array_utils.range_array(0, 100, 2)
+    an_array = array_utils.range_array(0, 85, 5)
     # print(linear_search(an_array, 1))
     # print(linear_search(an_array, 50))
     # print(linear_search(an_array, 100))
     # print(linear_search(an_array, 101))
     # linear_timer()
     print(an_array)
-    print(binary_search(an_array, 68))
+    print(binary_search(an_array, 30))
     
     
 if __name__ == "__main__":
