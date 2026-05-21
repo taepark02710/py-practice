@@ -51,6 +51,13 @@ def factorial(n):
         print(n)
         return n * factorial(n-1)
     
+def count_up(n):
+    if n <= 0:
+        return 0
+    else:
+        count_up(n-1)
+        print(n)
+    
     
 def main():
     # making_arrays()
@@ -65,7 +72,8 @@ def main():
     # print(an_array)
     # print_odds_rect(an_array)
     # print(countdown(5))
-    print(factorial(100))
+    # print(factorial(100))
+    count_up(5)
     
 if __name__ == "__main__":
     main()

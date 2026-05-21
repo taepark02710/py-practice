@@ -24,14 +24,35 @@ def linear_timer():
     print(linear_search_timer(an_array, 10000000))
     
     
+def binary_search(an_array, target, start=None, end=None):
+    if start == None and end == None:
+        start = 0
+        end = len(an_array) - 1
+        
+    if start > end:
+        return None
+    
+    midpoint = (start + end) // 2
+    if an_array[midpoint] == target:
+        return midpoint
+    
+    elif an_array[midpoint] < target:
+        return binary_search(an_array, target, midpoint + 1, end)
+    
+    elif an_array[midpoint] > target:
+        return binary_search(an_array, target, start, midpoint - 1)
+    
+    
+    
 def main():
-    an_array = array_utils.random_array(10,1,100)
+    an_array = array_utils.range_array(0, 100, 2)
     # print(linear_search(an_array, 1))
     # print(linear_search(an_array, 50))
     # print(linear_search(an_array, 100))
     # print(linear_search(an_array, 101))
-    linear_timer()
-    
+    # linear_timer()
+    print(an_array)
+    print(binary_search(an_array, 68))
     
     
 if __name__ == "__main__":
