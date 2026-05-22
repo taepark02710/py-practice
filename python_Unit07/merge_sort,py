@@ -1,0 +1,38 @@
+import arrays
+import array_utils
+import random
+
+def split(an_array):
+    evens = arrays.Array(len(an_array) // 2)
+    odd = arrays.Array(len(an_array) // 2)
+    is_even = True
+    even_index = 0
+    odd_index = 0
+    for i in range(len(an_array)):
+        if is_even:
+            evens[even_index] = an_array[i]
+            even_index += 1
+        else:
+            odd[odd_index] = an_array[i]
+            odd_index += 1
+        
+        is_even = not is_even
+    
+    return evens, odd
+
+def merge(sorted1, sorted2):
+    result = arrays.Array(len(sorted1) + len(sorted2))
+    i1 = 0
+    i2 = 0
+    
+
+def main():
+    random.seed(1)
+    an_array = array_utils.random_array(10, 0, 15)
+    print(an_array)
+    print(split(an_array))
+    
+    
+    
+if __name__ == "__main__":
+    main()

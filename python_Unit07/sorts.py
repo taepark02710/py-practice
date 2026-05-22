@@ -1,6 +1,5 @@
 import random
-import array_utils
-
+import array_utils 
 
 def swap(an_array, a, b):    
     temp = an_array[a]

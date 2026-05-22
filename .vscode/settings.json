@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./python_Unit06",
+        "./python_Unit07"
+    ]
+}
