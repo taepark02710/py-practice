@@ -1,5 +1,6 @@
 import random
 import array_utils 
+import arrays
 
 def swap(an_array, a, b):    
     temp = an_array[a]
@@ -7,15 +8,9 @@ def swap(an_array, a, b):
     an_array[b] = temp
     
 def shift(an_array, index):
-    if index <= 0:
-        return None
-
-    if an_array[index-1] > an_array[index]:
+    while index > 0 and an_array[index-1] > an_array[index]:
         swap(an_array, index, index-1)
-        return shift(an_array, index-1)
-
-    else:
-        return None
+        index -= 1
     
     
 def insertion_sort(an_array):
@@ -41,13 +36,19 @@ def insertion_sort_wo_swap(an_array):
         
     return an_array
         
+def insertion_sort_backwards(an_array):
+    for i in range(len(an_array)):
+        
+        
+            
+        
 
 def main():
     random.seed(19)
-    an_array = array_utils.random_array(10)
-    print(an_array)
-    print("Insertion sort:", insertion_sort(an_array))
-    print("Insertion sort wo swap", insertion_sort(an_array))
+    # an_array = array_utils.random_array(10)
+    # print(an_array)
+    # print("Insertion sort:", insertion_sort(an_array))
+    # print("Insertion sort wo swap", insertion_sort(an_array))
     
     
 if __name__ == "__main__":
