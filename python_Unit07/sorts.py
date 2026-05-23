@@ -36,10 +36,7 @@ def insertion_sort_wo_swap(an_array):
         
     return an_array
         
-def insertion_sort_backwards(an_array):
-    for i in range(len(an_array)):
-        
-        
+
             
         
 
