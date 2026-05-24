@@ -82,8 +82,66 @@ def array_pop(an_array, index):
         new_array[i-1] = an_array[i]
         
     return new_array, value
+
+def reverse_sequence(sqnce):
+    a_list = []
+    for i in range(len(sqnce) -1, -1, -1):
+        a_list.append(sqnce[i])
+        
+    return a_list
+
+def slicing():
+    a_list = []
+    string = "The best way to predict the future is to create it."
+    for i in string:
+        if i != " ":
+          a_list.append(i)
+    
+    the = a_list[0:3] 
+    print(the)
     
     
+def dices(a_list):
+    if len(a_list) <= 0:
+        return None
+    else:
+        print(a_list[0:1])
+        return dices(a_list[1:len(a_list)])
+
+def random_list(size):
+    a_list = []
+    for _ in range(size):
+        element = random.randint(0, 100)
+        a_list.append(element)
+        
+    return a_list
+
+def sorted_test(a_list, backwards=False):
+    
+    print(a_list)
+    sorted_list = sorted(a_list, reverse=backwards)
+    return sorted_list
+
+def sort_test(a_list, backwards=False):
+    print(a_list)
+    a_list.sort(reverse=backwards)
+    print(a_list)
+    
+def sort_cards(hand):
+    print(hand)
+    hand.sort(key=suit_key)
+    print(hand)
+    
+def suit_key(card):
+    if card[1] == "C":
+        return 1 + card[0]
+    elif card[1] == "D":
+        return 100 + card[0]
+    elif card[1] == "H":
+        return 1000 + card[0]
+    else:
+        return 10000 + card[0]
+      
         
 def main():
     # x = ("a", "b", 35, 4)
@@ -113,11 +171,24 @@ def main():
     # print(x)
     # popper(c_list)
     # print(c_list)
-    random.seed(1)
-    an_array = array_utils.random_array(10)
-    print(an_array)
-    b_array = array_insert(an_array, 5, 9999)
-    print(array_pop(b_array, 5))
+    # random.seed(1)
+    # an_array = array_utils.random_array(10)
+    # print(an_array)
+    # b_array = array_insert(an_array, 5, 9999)
+    # print(array_pop(b_array, 5))
+    # x = ["this", "is", "a", "test"]
+    # slicing()
+    # dices(x)
+    
+    # x1 = random_list(18)
+    # x2 = random_list(20)
+    # print(sorted_test(x1, True))
+    # # print(sorted_test(x2))
+    # print(sort_test(x1))
+    
+    hand = [(10, "D"), (10, "C"), (7, "H"), (2, "H"), (6, "S"), (10, "S")]
+    sort_cards(hand)
+    
     
     
     
