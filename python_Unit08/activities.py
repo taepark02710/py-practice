@@ -142,7 +142,61 @@ def suit_key(card):
     else:
         return 10000 + card[0]
       
+
+def packer():
+    return "a", "b", 34, True
+
+def swapper(a_list):
+
+    first_half = a_list[:len(a_list) // 2]
+    second_half = a_list[len(a_list)//2:]
+    
+    return second_half + first_half
+
+def chuncky(a_list, size):
+    for i in range(0, len(a_list), size):
+        print(a_list[i:size+i])
         
+def sevens_key(number):
+    if number == 7: 
+        return 0
+    else:
+        return 10
+    
+def lucky_7s(a_list):
+    print(a_list)
+    a_list.sort(key=sevens_key)
+    print(a_list)
+
+def comprehension():
+    list1 = [s for s in "foobar"]
+    print(list1)
+    list2 = [0 for _ in range(15)]
+    print(list2)
+    list3 = [i for i in range(0, 13)]
+    print(list3)
+    list4 = [e for e in range(0, 21) if e % 2 == 0]
+    print(list4)
+    list5 = [i for i in range(1, 50) if i % 3 == 0 or i % 5 == 0]
+    print(list5)
+    
+def make_table(rows, cols, value):
+    table = []
+    
+    # for _ in range(0, cols):
+    #     row = []
+    #     for _ in range(0, rows):
+    #         row.append(value)
+    #     table.append(row)
+    
+    # with list comprehension
+    table = [[value for _ in range(0, rows)] for _ in range(0, cols)]
+        
+    return table
+    
+
+
+
 def main():
     # x = ("a", "b", 35, 4)
     # # tuples(x)
@@ -186,8 +240,24 @@ def main():
     # # print(sorted_test(x2))
     # print(sort_test(x1))
     
-    hand = [(10, "D"), (10, "C"), (7, "H"), (2, "H"), (6, "S"), (10, "S")]
-    sort_cards(hand)
+    # hand = [(10, "D"), (10, "C"), (7, "H"), (2, "H"), (6, "S"), (10, "S")]
+    # sort_cards(hand)
+    
+    # packed = packer()
+    # print(packed[0])
+    # print(packed[1])
+    # print(packed[2])
+    # print(packed[3])
+    # x = [1,2,3,4,5,6,7,8,9,10]
+    # chuncky(x, 3)
+    # seven = [7*94, 7*0, 7*134, 7*45, 7*30, 7*11]
+    
+        
+    # lucky_7s(seven)
+    # comprehension()
+    
+    print(make_table(5,5,9))
+    
     
     
     
