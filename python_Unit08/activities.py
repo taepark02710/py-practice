@@ -128,19 +128,19 @@ def sort_test(a_list, backwards=False):
     print(a_list)
     
 def sort_cards(hand):
-    print(hand)
     hand.sort(key=suit_key)
-    print(hand)
     
 def suit_key(card):
-    if card[1] == "C":
-        return 1 + card[0]
-    elif card[1] == "D":
-        return 100 + card[0]
-    elif card[1] == "H":
-        return 1000 + card[0]
+    if card[0] == "Jack":
+        return 11
+    elif card[0] == "Queen":
+        return 12
+    elif card[0] == "King":
+        return 13
+    elif card[0] == "Ace":
+        return 1
     else:
-        return 10000 + card[0]
+        return int(card[0])
       
 
 def packer():

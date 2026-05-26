@@ -74,6 +74,14 @@ def deal(deck, num):
         draw(deck, hand2)
         
     return hand1, hand2
+
+def cut(deck):
+    first_half = deck[:len(deck) // 2]
+    second_half = deck[len(deck) // 2:]
+    
+    return first_half, second_half
+
+
     
 def main():
     # print(make_card(2, "Hearts")[3])
