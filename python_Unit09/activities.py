@@ -164,7 +164,24 @@ def count_words(filename):
                         
     return freq_word, most_word
         
+def find_maximum(dictionary):
+    
+    maximum = 0
+    max_key = ""
+    
+    for keys in dictionary.keys():
+        if maximum < dictionary[keys]:
+            max_key = keys
+            maximum = dictionary[keys]
             
+    return max_key
+
+def hashes():
+    
+    print(hash("Hello World"))
+    print(hash("Hello world"))
+    
+    
 
 def main():
     
@@ -188,7 +205,11 @@ def main():
     # minus(a_set, b_set)
     # print(a_set)
     
-    print(count_words("data/alice.txt"))
+    # print(count_words("data/alice.txt"))
+    # a_dict = {"5": 5, "10": 10, "1000": 1000, "124" : 124, "500": 500}
+    # print(find_maximum(a_dict))
+    
+    hashes()
     
     
 if __name__ == "__main__":
